@@ -1,0 +1,28 @@
+1 怎么确定项目 需要安装node的版本?
+package.json 文件中 engines 属性定义了，如："node": ">= 16.0.0",安装 16.0.0以上的就可以。
+
+2 启动流程：
+# 安装 pnpm，提升依赖的安装速度
+npm config set registry https://registry.npmmirror.com
+npm install -g pnpm
+# 安装依赖
+pnpm install
+
+# 启动服务
+npm run dev
+
+3 如果想切换环境怎么修改？
+package.json 文件中,scripts中【"dev": "vite --mode env.local",】的【env.local】就是不同环境对应的文件。如果要切换到测试环境，
+将值修改为 【"dev": "vite --mode env.test",】
+
+4 前端调用后端的地址在什么地方定义呢？
+package.json 文件中,scripts中【"dev": "vite --mode env.local",】打开【.env.local】文件：
+# 请求路径，48080就是后端使用的接口，如果后端服务修改了接口，需要在这里改成相同的。
+VITE_BASE_URL='http://localhost:48080'
+# 接口地址
+VITE_API_URL=/admin-api
+
+5 用户名与密码
+admin/admin123
+
+
